@@ -83,11 +83,11 @@ void GPIO_writePIN(GPIO_Type *GPIOx, uint8_t pin,uint8_t val)
 
 void GPIO_configureInterrupt(IRQn_Type irq_no,uint32_t priority)
 {
-	NVIC_EnableIRQ (irq_no);
-	NVIC_SetPriority (irq_no, priority);
+	NVIC_EnableIRQ (irq_no);				/* Enables Interruption using a CMSIS function  */
+	NVIC_SetPriority (irq_no, priority);	/* Sets the priority of the irq */
 }
 
 void GPIO_clearInterrupt(PORT_Type *PORTx)
 {
-	PORTx->ISFR = 0xFFFFFFF;
+	PORTx->ISFR = 0xFFFFFFF;				/* Clear interruptflag */
 }

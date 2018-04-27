@@ -173,7 +173,11 @@ void GPIO_writePIN(GPIO_Type *GPIOx, uint8_t pin,uint8_t val);
  * GPIO Application Programming interface for interrupts
  * Functions used to initialize and program the GPIOs interruptions
  */
+
+/* This function initializes the IRQ */
 void GPIO_configureInterrupt(IRQn_Type irq_no,uint32_t priority);
+
+/* This function clears the interrupt flag */
 void GPIO_clearInterrupt(PORT_Type *PORTx);
 
 #endif /* GPIO_H_ */
