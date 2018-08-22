@@ -19,8 +19,6 @@ int main(void) {
 	spi_gpio_init();
 	spi_init_f();
 
-	int i=1;
-
     while(1)
     {
     	while(spi_config.State != SPI_STATE_READY );
