@@ -25,25 +25,25 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: 00-GPIOdrivers.axf
+all: GPIOdrivers.axf
 
 # Tool invocations
-00-GPIOdrivers.axf: $(OBJS) $(USER_OBJS)
+GPIOdrivers.axf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -Xlinker -Map="00-GPIOdrivers.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0plus -mthumb -T 00-GPIOdrivers_Debug.ld -o "00-GPIOdrivers.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -Xlinker -Map="GPIOdrivers.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0plus -mthumb -T 00-GPIOdrivers_Debug.ld -o "GPIOdrivers.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) 00-GPIOdrivers.axf
+	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) GPIOdrivers.axf
 	-@echo ' '
 
 post-build:
 	-@echo 'Performing post-build steps'
-	-arm-none-eabi-size "00-GPIOdrivers.axf"; # arm-none-eabi-objcopy -v -O binary "00-GPIOdrivers.axf" "00-GPIOdrivers.bin" ; # checksum -p MKL25Z128xxx4 -d "00-GPIOdrivers.bin";
+	-arm-none-eabi-size "GPIOdrivers.axf"; # arm-none-eabi-objcopy -v -O binary "GPIOdrivers.axf" "GPIOdrivers.bin" ; # checksum -p MKL25Z128xxx4 -d "GPIOdrivers.bin";
 	-@echo ' '
 
 .PHONY: all clean dependents
